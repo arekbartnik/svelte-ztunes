@@ -12,5 +12,11 @@ export const queries = {
 			.where('id', artistID)
 			.related('albums', (album) => album.related('cartItems'))
 			.one()
+	),
+
+	getCartItems: syncedQueryWithContext('getCartItems', z.tuple([]), (userID: string | undefined) =>
+		builder.cartItem
+			.related('album', (album) => album.one().related('artist', (artist) => artist.one()))
+			.where('userId', userID ?? '')
 	)
 };

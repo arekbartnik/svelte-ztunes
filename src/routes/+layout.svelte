@@ -2,7 +2,7 @@
 	import '@drop-in/graffiti';
 
 	import favicon from '$lib/assets/favicon.ico';
-	import { authClient } from '$lib/auth/client.js';
+	import { authClient } from '$lib/auth/client';
 
 	let { children, data } = $props();
 </script>
@@ -12,11 +12,13 @@
 </svelte:head>
 
 <div class="wrapper">
-	<div>
+	<div class="header">
 		<div class="layout-split" data-style="center">
-			<a href="/">
-				<img src="/logo.png" alt="logo" height="200" width="200" />
-			</a>
+			<div>
+				<a href="/" style="display: inline-block">
+					<img src="/logo.png" alt="logo" height="200" width="200" />
+				</a>
+			</div>
 			<div class="user">
 				{#if data.user}
 					<div class="layout-cluster" data-style="center">
@@ -52,7 +54,11 @@
 
 <style>
 	.wrapper {
-		padding: 2rem;
+		padding: var(--pad-m);
+	}
+
+	.header {
+		padding-block-end: var(--pad-m);
 	}
 
 	img {
