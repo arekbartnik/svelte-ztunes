@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev:vite": "vite dev",
+		"dev:app": "vite dev",
 		"dev:zero": "npx zero-cache-dev -p src/schema.ts",
 		"dev": "concurrently \"npm run db:start\" \"npm run dev:zero\" \"npm run dev:vite\" ",
 		"build": "vite build",
@@ -22,7 +22,7 @@
 		"db:migrate": "drizzle-kit migrate",
 		"db:studio": "drizzle-kit studio",
 		"generate-zero-schema": "drizzle-zero generate --format -o src/schema.gen.ts",
-		"seed": "tsx scripts/seed.ts",
+		"db:seed": "tsx scripts/seed.ts",
 		"update-packages": "npx npm-check-updates -u"
 	},
 	"devDependencies": {
