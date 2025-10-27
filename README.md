@@ -1,38 +1,30 @@
-# sv
+# svelte ztunes
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+- this is a Svelte version of [ztunes](https://github.com/rocicorp/ztunes/tree/main)
+- additionally uses [graffiti](https://github.com/stolinski/graffiti/tree/main) for styling
 
-## Creating a project
+# Get started
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+1. Install [Docker](https://docker.com/)
+2. `cp .env.example .env`, then fill in all the required vars
+3. Install dependencies:
+```bash
+npm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+3. Start, migrate and seed DB:
+```bash
+npm run db:start
+npm run db:migrate
+npm run db:seed
 ```
 
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
+4. Start zero-cache:
+```bash
+npm run dev:zero
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+5. Start the app:
+```bash
+npm run dev:app
+```
