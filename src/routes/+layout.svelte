@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '@drop-in/graffiti';
 
-	import favicon from '$lib/assets/favicon.ico';
 	import { authClient } from '$lib/auth/client';
 	import { refreshAll } from '$app/navigation';
 	import Cart from '$lib/Cart.svelte';
@@ -10,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
 <div class="wrapper">
