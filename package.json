@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev:app": "vite dev",
 		"dev:zero": "npx zero-cache-dev -p src/schema.ts",
-		"dev": "concurrently \"npm run db:start\" \"npm run dev:zero\" \"npm run dev:vite\" ",
+		"dev": "concurrently \"npm run db:start\" \"npm run dev:zero\" \"npm run dev:app\" ",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
