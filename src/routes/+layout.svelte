@@ -2,8 +2,10 @@
 	import '@drop-in/graffiti';
 
 	import { authClient } from '$lib/auth/client';
-	import { refreshAll } from '$app/navigation';
+	import { goto, refreshAll } from '$app/navigation';
 	import Cart from '$lib/Cart.svelte';
+	import Github from '$lib/icons/Github.svelte';
+	import Google from '$lib/icons/Google.svelte';
 
 	let { children, data } = $props();
 </script>
@@ -31,24 +33,39 @@
 						<button
 							onclick={async () => {
 								await authClient.signOut();
-								refreshAll();
+								await refreshAll();
+								await goto('/');
 							}}
 						>
 							Sign Out
 						</button>
 					</div>
 				{:else}
-					<button
-						onclick={async () => {
-							const callbackURL = location.href;
-							await authClient.signIn.social({
-								provider: 'github',
-								callbackURL
-							});
-						}}
-					>
-						Continue with GitHub
-					</button>
+					<div class="layout-cluster">
+						<button
+							onclick={async () => {
+								const callbackURL = location.href;
+								await authClient.signIn.social({
+									provider: 'google',
+									callbackURL
+								});
+							}}
+						>
+							<Google />
+						</button>
+
+						<button
+							onclick={async () => {
+								const callbackURL = location.href;
+								await authClient.signIn.social({
+									provider: 'github',
+									callbackURL
+								});
+							}}
+						>
+							<Github />
+						</button>
+					</div>
 				{/if}
 			</div>
 		</div>
