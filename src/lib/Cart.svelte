@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { z } from './zero.svelte';
-	import * as queries from './zero/queries';
+	import { queries } from './zero/queries';
 
 	let cart_items = z.createQuery(queries.get_cart_items(page.data.user.id));
 </script>

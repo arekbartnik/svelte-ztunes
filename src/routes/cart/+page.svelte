@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { get_options, z } from '$lib/zero.svelte';
-	import * as queries from '$lib/zero/queries';
+	import { queries } from '$lib/zero/queries';
 
-	let cart_items = z.createQuery(queries.get_cart_items(page.data.user.id));
+	let cart_items = z.createQuery(queries.get_cart_items(page.data?.user?.id));
 </script>
 
 {#if !page.data.user}
@@ -22,7 +22,6 @@
 								type="button"
 								onclick={() => {
 									if (!item.album) return;
-									z.build(get_options());
 									z.mutate.cart.remove(item.album.id);
 								}}>Remove</button
 							></td

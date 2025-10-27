@@ -1,6 +1,6 @@
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import * as queries from '$lib/zero/queries';
+import { queries } from '$lib/zero/queries';
 import { type ReadonlyJSONValue, withValidation } from '@rocicorp/zero';
 import { auth } from '$lib/auth/server';
 import { handleGetQueriesRequest } from '@rocicorp/zero/server';

@@ -9,7 +9,6 @@
 	let message = $derived.by(() => (cartItems.length > 0 ? 'Remove from Cart' : 'Add to Cart'));
 
 	const handle_cart = () => {
-		z.build(get_options());
 		if (cartItems.length > 0) {
 			z.mutate.cart.remove(album.id);
 		} else {

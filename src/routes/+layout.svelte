@@ -6,11 +6,15 @@
 	import Cart from '$lib/Cart.svelte';
 	import Github from '$lib/icons/Github.svelte';
 	import Google from '$lib/icons/Google.svelte';
+	import { z, get_options } from '$lib/zero.svelte.js';
+
+	z.build(get_options());
 
 	let { children, data } = $props();
 </script>
 
 <svelte:head>
+	<title>Ztunes</title>
 	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 

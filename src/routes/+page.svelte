@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { z } from '$lib/zero.svelte';
-	import * as queries from '$lib/zero/queries';
+	import { queries } from '$lib/zero/queries';
 
 	const limit = 20;
 	let search = $state('');
