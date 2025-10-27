@@ -2,7 +2,7 @@ import { type Transaction } from '@rocicorp/zero';
 import { type CustomMutatorDefs } from '@rocicorp/zero';
 import type { Schema } from '../../schema';
 
-export function createMutators(userId: string | undefined) {
+export function mutators(userId: string | undefined) {
 	return {
 		cart: {
 			add: async (
@@ -45,4 +45,4 @@ export function createMutators(userId: string | undefined) {
 	} as const satisfies CustomMutatorDefs;
 }
 
-export type Mutators = ReturnType<typeof createMutators>;
+export type Mutators = ReturnType<typeof mutators>;

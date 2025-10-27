@@ -8,7 +8,7 @@
 
 	let message = $derived.by(() => (cartItems.length > 0 ? 'Remove from Cart' : 'Add to Cart'));
 
-	const handleCart = () => {
+	const handle_cart = () => {
 		z.build(get_options());
 		if (cartItems.length > 0) {
 			z.mutate.cart.remove(album.id);
@@ -19,7 +19,7 @@
 </script>
 
 {#if page.data.user}
-	<button onclick={handleCart} type="button">{message}</button>
+	<button onclick={handle_cart} type="button">{message}</button>
 {:else}
 	<button disabled>Login to shop</button>
 {/if}

@@ -4,7 +4,7 @@ import { zeroPostgresJS } from '@rocicorp/zero/server/adapters/postgresjs';
 import postgres from 'postgres';
 import { schema } from '../../../../schema';
 import { json, type RequestHandler } from '@sveltejs/kit';
-import { createMutators } from '$lib/zero/mutators';
+import { mutators } from '$lib/zero/mutators';
 import { auth } from '$lib/auth/server';
 
 if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
@@ -20,7 +20,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	}
 
 	try {
-		const result = await processor.process(createMutators(userID), request);
+		const result = await processor.process(mutators(userID), request);
 		return json(result);
 	} catch (err) {
 		return json({ error: 'Invalid token' }, { status: 401 });

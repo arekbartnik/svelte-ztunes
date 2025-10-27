@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { get_options, z } from '$lib/zero.svelte';
-	import { queries } from '$lib/zero/queries';
+	import * as queries from '$lib/zero/queries';
 
-	let cartItems = z.createQuery(queries.getCartItems(page.data.user.id));
+	let cart_items = z.createQuery(queries.get_cart_items(page.data.user.id));
 </script>
 
 {#if !page.data.user}
@@ -11,10 +11,10 @@
 {:else}
 	<h3>Cart</h3>
 
-	{#if cartItems.data.length}
+	{#if cart_items.data.length}
 		<table style="width: 500px">
 			<tbody>
-				{#each cartItems.data as item}
+				{#each cart_items.data as item}
 					<tr>
 						<td>{item.album?.title}</td>
 						<td style="padding-left: 1rem"

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { z } from '$lib/zero.svelte';
-	import { queries } from '$lib/zero/queries';
+	import * as queries from '$lib/zero/queries';
 
 	const limit = 20;
 	let search = $state('');
 
-	const artists = $derived(z.createQuery(queries.getHomepageArtists(search)));
+	const artists = $derived(z.createQuery(queries.get_artists(search)));
 </script>
 
 <h3>Search 85,000 artists from the 1990s...</h3>

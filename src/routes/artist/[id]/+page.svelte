@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { queries } from '$lib/zero/queries';
+	import * as queries from '$lib/zero/queries';
 	import { page } from '$app/state';
 	import CartButton from '$lib/CartButton.svelte';
 	import { z } from '$lib/zero.svelte';
 
-	const artistId = $derived(page.params.id ?? '');
-	const artist = $derived(z?.createQuery(queries.getArtist(artistId)));
+	const artist_id = $derived(page.params.id ?? '');
+	const artist = $derived(z.createQuery(queries.get_artist(artist_id)));
 </script>
 
 {#if !artist?.data}
