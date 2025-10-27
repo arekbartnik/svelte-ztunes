@@ -3,6 +3,8 @@
 
 	import favicon from '$lib/assets/favicon.ico';
 	import { authClient } from '$lib/auth/client';
+	import { refreshAll } from '$app/navigation';
+	import Cart from '$lib/Cart.svelte';
 
 	let { children, data } = $props();
 </script>
@@ -22,13 +24,15 @@
 			<div class="user">
 				{#if data.user}
 					<div class="layout-cluster" data-style="center">
-						<div>
-							{data.user.email}
+						<div class="layout-cluster">
+							<div><Cart /></div>
+							<div>{data.user.email}</div>
 						</div>
 
 						<button
 							onclick={async () => {
 								await authClient.signOut();
+								refreshAll();
 							}}
 						>
 							Sign Out
@@ -37,8 +41,10 @@
 				{:else}
 					<button
 						onclick={async () => {
+							const callbackURL = location.href;
 							await authClient.signIn.social({
-								provider: 'github'
+								provider: 'github',
+								callbackURL
 							});
 						}}
 					>
